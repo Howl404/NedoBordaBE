@@ -1,22 +1,23 @@
-import Express from 'express'
+import Express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const app = Express()
-const port = 3000
+const app = Express();
+const port = 3000;
 
 const mongoURI = process.env.MONGO_URI || '';
 
-mongoose.connect(mongoURI)
+mongoose
+  .connect(mongoURI)
   .then(() => console.log('Connected to MongoDB Atlas'))
-  .catch(err => console.error('Could not connect to MongoDB Atlas', err));
+  .catch((err) => console.error('Could not connect to MongoDB Atlas', err));
 
 const userSchema = new mongoose.Schema({
   name: String,
   email: String,
-  password: String
+  password: String,
 });
 
 const User = mongoose.model('User', userSchema);
@@ -39,7 +40,7 @@ app.post('/add-mock-user', async (req, res) => {
     const mockUser = new User({
       name: 'John Doe',
       email: 'john.doe@example.com',
-      password: 'password123'
+      password: 'password123',
     });
 
     const savedUser = await mockUser.save();

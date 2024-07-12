@@ -1,0 +1,35 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["./tsconfig.json"]
+      },
+      "extends": [
+        "airbnb-base",
+        "airbnb-typescript/base",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "no-unused-vars": "error",
+        "import/no-cycle": "off",
+        "no-plusplus": "off",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "no-public"
+          }
+        ],
+        "import/prefer-default-export": "off",
+        "class-methods-use-this": "off",
+        "no-console": "warn",
+        "no-alert": "off",
+        "@typescript-eslint/explicit-function-return-type": "error"
+      }
+    }
+  ]
+}
